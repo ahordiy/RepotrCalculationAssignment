@@ -22,19 +22,19 @@ namespace ReportCalculationAssignment.XUnitTests
 
             var exchangeService = new ExchangeService( CurrencyEnum.USD );
 
-            exchangeService.AssignRate( CurrencyEnum.EUR, 0.85m );
+            /*exchangeService.AssignRate( CurrencyEnum.EUR, 0.85m );
             exchangeService.AssignRate( CurrencyEnum.UAH, 26.78m );
             exchangeService.AssignRate( CurrencyEnum.CHF, 1m );
-
-            /*exchangeService.AssignRate( CurrencyEnum.EUR, 0.857818m );
+            */
+            exchangeService.AssignRate( CurrencyEnum.EUR, 0.857818m );
             exchangeService.AssignRate( CurrencyEnum.UAH, 26.78m );
             exchangeService.AssignRate( CurrencyEnum.CHF, 0.99m );
-            */
+            
 
             var reportCurrency = CurrencyEnum.EUR;
             Report rep = new Report( exchangeService, dataMoq.Object );
 
-            var result = rep.CalculateSharesTotal( );
+            var result = rep.CalculateSharesTotal( reportCurrency );
             
             Debug.Assert( result.Currency == reportCurrency && result.Value > 0 );
         }
